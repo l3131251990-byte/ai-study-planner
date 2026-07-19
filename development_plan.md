@@ -14,6 +14,7 @@
 - 完成 Prompt 日志 API
 - 配置本地 SQLite 和生产 PostgreSQL
 - 推荐提交信息：`feat: add flask api for tasks and prompts`
+- 当前状态：已完成后端 API 测试，并完成前端任务/Prompt 基础交互页面
 
 ## 阶段 3：前端页面
 
@@ -35,4 +36,3 @@
 - 使用 AI 做一次 Code Review
 - 补充截图、接口测试记录和总结报告
 - 推荐提交信息：`docs: add prompt log code review and final summary`
-

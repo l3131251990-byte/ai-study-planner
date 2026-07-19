@@ -41,3 +41,40 @@ export function getPrompts() {
   return request<PromptLog[]>("/api/prompts");
 }
 
+export function createTask(data: {
+  title: string;
+  description?: string;
+  status?: string;
+}) {
+  return request<Task>("/api/tasks", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+}
+
+export function updateTask(
+  id: number,
+  data: Partial<Pick<Task, "title" | "description" | "status">>,
+) {
+  return request<Task>(`/api/tasks/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+  });
+}
+
+export function deleteTask(id: number) {
+  return request<{ ok: boolean }>(`/api/tasks/${id}`, {
+    method: "DELETE",
+  });
+}
+
+export function createPrompt(data: {
+  prompt: string;
+  response: string;
+  related_file?: string;
+}) {
+  return request<PromptLog>("/api/prompts", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+}

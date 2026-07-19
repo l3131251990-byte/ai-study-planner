@@ -62,3 +62,21 @@ Python 3.12.1
 
 建议使用 VS Code、Cursor 或 Codex 当前工作区继续开发。Python 3.5 不建议使用，因为 Flask、SQLAlchemy 和部署平台对旧版本兼容性较差。
 
+## 2026-07-19 追加检查
+
+- 后端虚拟环境已创建：`backend/.venv`
+- 后端依赖已安装到虚拟环境
+- Flask API 已通过测试客户端验证：
+  - `GET /api/health`
+  - `POST /api/tasks`
+  - `PATCH /api/tasks/<id>`
+  - `GET /api/tasks`
+  - `POST /api/prompts`
+- 前端依赖已安装，生成 `frontend/package-lock.json`
+- TypeScript 检查通过：`tsc --noEmit`
+
+本机限制：
+
+- `npm run build` 在当前 Windows/Codex 执行环境中返回 `Access is denied`
+- 使用完整 Node 路径直接执行 Next build 时，Next SWC 原生包报 `not a valid Win32 application`
+- 当前先以 TypeScript 静态检查和后端 API 测试作为本地验证，最终部署阶段使用 Vercel 云端构建继续验证

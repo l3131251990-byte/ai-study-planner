@@ -1,4 +1,6 @@
 node_modules/
+.npm-cache/
+.next-swc-cache/
 .next/
 out/
 dist/
@@ -6,8 +8,9 @@ build/
 .venv/
 __pycache__/
 *.pyc
+*.tsbuildinfo
+*.db
 .env
 .env.local
 .DS_Store
 .codex_tmp_pdfdeps/
-
