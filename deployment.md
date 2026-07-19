@@ -11,19 +11,20 @@
 1. 新建 Web Service。
 2. 连接 GitHub 仓库。
 3. Root Directory 设置为 `backend`。
-4. Build Command:
+4. Runtime 使用 Python，项目中已提供 `backend/runtime.txt`。
+5. Build Command:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-5. Start Command:
+6. Start Command:
 
 ```bash
 gunicorn app:app
 ```
 
-6. 添加环境变量：
+7. 添加环境变量：
 
 ```text
 DATABASE_URL=你的 Supabase PostgreSQL 连接字符串
