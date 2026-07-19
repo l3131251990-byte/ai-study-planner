@@ -4,13 +4,15 @@
 
 :root {
   color-scheme: light;
-  --background: #f7f8fa;
+  --background: #f5f7fb;
   --foreground: #172033;
 }
 
 body {
   margin: 0;
-  background: var(--background);
+  background:
+    radial-gradient(circle at top left, rgba(20, 184, 166, 0.1), transparent 30rem),
+    linear-gradient(180deg, #f8fafc 0%, var(--background) 100%);
   color: var(--foreground);
 }
 
@@ -19,3 +21,9 @@ a {
   text-decoration: none;
 }
 
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
