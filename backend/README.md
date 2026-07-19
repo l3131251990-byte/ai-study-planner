@@ -30,3 +30,5 @@ Required environment variable:
 ```text
 DATABASE_URL=postgresql://...?...sslmode=require
 ```
+
+The app converts `postgresql://` to SQLAlchemy's `postgresql+psycopg://` driver URL internally.

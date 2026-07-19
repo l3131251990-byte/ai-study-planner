@@ -19,6 +19,8 @@ postgresql://postgres:你的密码@你的主机:5432/postgres?sslmode=require
 
 注意不要把真实数据库密码提交到 GitHub。
 
+后端代码会自动把 `postgresql://` 转换为 SQLAlchemy 使用的 `postgresql+psycopg://`，所以 Render 环境变量里保持 Supabase 给出的 `postgresql://...` 格式即可。
+
 ## Render Backend
 
 1. 新建 Web Service。
