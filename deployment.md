@@ -5,6 +5,19 @@
 1. 创建 Supabase 免费项目。
 2. 在 Project Settings 中复制 PostgreSQL connection string。
 3. 将连接字符串配置到 Render 的 `DATABASE_URL`。
+4. 如果 Supabase 给出的连接串没有 SSL 参数，建议追加：
+
+```text
+?sslmode=require
+```
+
+最终格式类似：
+
+```text
+postgresql://postgres:你的密码@你的主机:5432/postgres?sslmode=require
+```
+
+注意不要把真实数据库密码提交到 GitHub。
 
 ## Render Backend
 
@@ -53,3 +66,20 @@ NEXT_PUBLIC_API_BASE_URL=你的 Render 后端地址
 5. 部署后把 URL 写入 `README.md`。
 
 前端部署完成后，进入 `/tasks` 和 `/prompts` 页面测试新增数据。如果数据能刷新展示，说明 Vercel、Render 和数据库已经联通。
+
+## GitHub 推送
+
+本地项目完成后，在项目根目录执行：
+
+```bash
+git remote add origin 你的 GitHub 仓库地址
+git branch -M main
+git push -u origin main
+```
+
+如果 `origin` 已存在，改用：
+
+```bash
+git remote set-url origin 你的 GitHub 仓库地址
+git push -u origin main
+```

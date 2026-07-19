@@ -4,7 +4,7 @@
 
 - [ ] 创建 GitHub 公开仓库
 - [ ] 推送本地代码到 GitHub
-- [ ] 确认至少 3 个不同日期的有效提交
+- [ ] 确认有清晰、真实的阶段提交记录
 - [ ] README 中补充 GitHub 仓库地址、Vercel URL、Render URL
 
 ## Render
@@ -41,4 +41,3 @@
 - [ ] 数据库截图
 - [ ] AI Code Review 截图或报告
 - [ ] 项目演示录屏
-

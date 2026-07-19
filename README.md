@@ -72,9 +72,41 @@ npm run dev
 - 前端环境变量 `NEXT_PUBLIC_API_BASE_URL` 指向 Render 后端 URL
 - 后端环境变量 `DATABASE_URL` 指向 Supabase 连接字符串
 
+## 线上地址
+
+提交前补充：
+
+```text
+GitHub Repository:
+Vercel Frontend:
+Render Backend:
+Backend Health Check:
+```
+
+## Render 配置
+
+```text
+Root Directory: backend
+Build Command: pip install -r requirements.txt
+Start Command: gunicorn app:app
+Environment:
+  DATABASE_URL=Supabase PostgreSQL 连接字符串
+  FLASK_ENV=production
+```
+
+## Vercel 配置
+
+```text
+Root Directory: frontend
+Build Command: npm run build
+Install Command: npm install
+Environment:
+  NEXT_PUBLIC_API_BASE_URL=Render 后端 URL
+```
+
 ## Git 留痕建议
 
-考核要求至少 3 个不同日期的有效提交。建议不要一次性完成后补提交，应按阶段真实提交：
+当前按一天内完成项目处理，仍保留清晰的阶段提交记录：
 
 - `chore: initialize fullstack project structure`
 - `feat: add task and prompt workflows`
@@ -91,3 +123,9 @@ npm run dev
 - AI Code Review 截图或报告：
 - 演示录屏：
 - 个人总结报告：
+
+## 当前验证记录
+
+- 后端自动测试：`pytest`，3 passed
+- 前端静态检查：`tsc --noEmit`，passed
+- 本机限制：当前 Windows/Codex 环境中 Next SWC 原生包加载失败，最终以前端部署平台 Vercel 的构建结果为准
