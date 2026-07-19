@@ -124,6 +124,16 @@ Environment:
 - 演示录屏：
 - 个人总结报告：
 
+## 文档位置
+
+- API 文档：`api_docs.md`
+- Prompt 日志：`prompt_log.md`
+- AI Code Review：`code_review.md`
+- 个人总结：`summary.md`
+- 部署说明：`deployment.md`
+- 提交检查清单：`submission_checklist.md`
+- 截图目录：`docs/screenshots/`
+
 ## 当前验证记录
 
 - 后端自动测试：`pytest`，3 passed
