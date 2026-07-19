@@ -47,6 +47,14 @@ copy .env.example .env
 python app.py
 ```
 
+### 后端测试
+
+```bash
+cd backend
+pip install -r requirements-dev.txt
+pytest
+```
+
 ### 前端
 
 ```bash
@@ -64,6 +72,15 @@ npm run dev
 - 前端环境变量 `NEXT_PUBLIC_API_BASE_URL` 指向 Render 后端 URL
 - 后端环境变量 `DATABASE_URL` 指向 Supabase 连接字符串
 
+## Git 留痕建议
+
+考核要求至少 3 个不同日期的有效提交。建议不要一次性完成后补提交，应按阶段真实提交：
+
+- `chore: initialize fullstack project structure`
+- `feat: add task and prompt workflows`
+- `test: add backend api coverage`
+- `docs: add deployment evidence and final summary`
+
 ## 提交物清单
 
 - GitHub 仓库地址：
@@ -74,4 +91,3 @@ npm run dev
 - AI Code Review 截图或报告：
 - 演示录屏：
 - 个人总结报告：
-

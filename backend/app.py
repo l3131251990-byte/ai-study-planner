@@ -45,7 +45,7 @@ class PromptLog(db.Model):
         }
 
 
-def create_app():
+def create_app(test_config=None):
     app = Flask(__name__)
     database_url = os.getenv("DATABASE_URL", "sqlite:///dev.db")
     if database_url.startswith("postgres://"):
@@ -53,6 +53,8 @@ def create_app():
 
     app.config["SQLALCHEMY_DATABASE_URI"] = database_url
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    if test_config:
+        app.config.update(test_config)
 
     CORS(app)
     db.init_app(app)
@@ -142,4 +144,3 @@ app = create_app()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
-

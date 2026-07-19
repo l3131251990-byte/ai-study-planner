@@ -30,6 +30,14 @@ DATABASE_URL=你的 Supabase PostgreSQL 连接字符串
 FLASK_ENV=production
 ```
 
+部署成功后，访问：
+
+```text
+https://你的-render-service.onrender.com/api/health
+```
+
+如果返回 `{"status":"ok"}`，说明后端部署成功。
+
 ## Vercel Frontend
 
 1. 新建 Vercel Project。
@@ -43,3 +51,4 @@ NEXT_PUBLIC_API_BASE_URL=你的 Render 后端地址
 
 5. 部署后把 URL 写入 `README.md`。
 
+前端部署完成后，进入 `/tasks` 和 `/prompts` 页面测试新增数据。如果数据能刷新展示，说明 Vercel、Render 和数据库已经联通。
