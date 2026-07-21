@@ -81,6 +81,7 @@ npm run dev
 - GitHub Repository: [https://github.com/l3131251990-byte/ai-study-planner](https://github.com/l3131251990-byte/ai-study-planner)
 - Vercel Frontend: [https://ai-study-planner-ashy.vercel.app](https://ai-study-planner-ashy.vercel.app)
 - Render Backend: [https://ai-study-planner-g7al.onrender.com](https://ai-study-planner-g7al.onrender.com)
+- Render Dashboard: [https://dashboard.render.com/web/srv-d9ed4lbrjlhs73c6uhj0](https://dashboard.render.com/web/srv-d9ed4lbrjlhs73c6uhj0)
 - Backend Health Check: [https://ai-study-planner-g7al.onrender.com/api/health](https://ai-study-planner-g7al.onrender.com/api/health)
 - Tasks API: [https://ai-study-planner-g7al.onrender.com/api/tasks](https://ai-study-planner-g7al.onrender.com/api/tasks)
 - Plans API: [https://ai-study-planner-g7al.onrender.com/api/plans](https://ai-study-planner-g7al.onrender.com/api/plans)
