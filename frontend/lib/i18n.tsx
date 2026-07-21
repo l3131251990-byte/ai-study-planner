@@ -4,49 +4,41 @@ import { createContext, ReactNode, useContext, useEffect, useMemo, useState } fr
 
 export type Language = "zh" | "en";
 
-type LanguageContextValue = {
-  language: Language;
-  setLanguage: (language: Language) => void;
-  t: typeof messages.zh;
-};
-
 const messages = {
   zh: {
     appName: "AI 学习计划器",
     nav: {
       dashboard: "仪表盘",
       tasks: "学习任务",
-      prompts: "Prompt 日志",
-      review: "项目复盘",
+      plans: "学习计划",
+      notes: "学习笔记",
     },
     language: {
-      zh: "中文",
-      en: "English",
       switchTo: "切换语言",
     },
     common: {
       apiError: "无法连接后端 API。请确认 Flask 已启动，或已配置线上后端地址。",
-      emptyFile: "未关联文件",
       loading: "加载中...",
     },
     dashboard: {
       title: "学习仪表盘",
-      subtitle: "跟踪学习任务、AI Prompt 留痕和全栈项目进度。",
+      subtitle: "跟踪任务、计划、笔记和全栈项目进度。",
       totalTasks: "任务总数",
       completed: "已完成",
-      promptLogs: "Prompt 记录",
+      plans: "学习计划",
+      notes: "学习笔记",
       apiStatus: "API 状态",
       offline: "离线",
       checking: "检查中",
       online: "在线",
       recentTasks: "最近任务",
-      recentPrompts: "最近 Prompt",
+      recentPlans: "最近计划",
       noTasks: "暂无任务数据。",
-      noPrompts: "暂无 Prompt 数据。",
+      noPlans: "暂无计划数据。",
     },
     tasks: {
       title: "学习任务",
-      subtitle: "管理实训任务，形成可演示的开发过程记录。",
+      subtitle: "管理实训任务，形成可演示的学习进度记录。",
       completion: "完成率",
       titlePlaceholder: "任务标题",
       descriptionPlaceholder: "任务说明",
@@ -68,31 +60,39 @@ const messages = {
         done: "已完成",
       },
     },
-    prompts: {
-      title: "Prompt 日志",
-      subtitle: "记录 Prompt、AI 回复和关联文件，满足过程留痕要求。",
-      promptPlaceholder: "用户 Prompt",
-      responsePlaceholder: "AI 原始回复或关键输出",
-      filePlaceholder: "关联功能或文件，例如 frontend/app/tasks/page.tsx",
-      add: "新增 Prompt",
-      loading: "正在加载 Prompt 日志...",
-      empty: "暂无 Prompt 日志，先新增一条开发记录。",
-      required: "Prompt 和 AI 回复不能为空。",
-      createFailed: "新增 Prompt 日志失败。",
-      prompt: "Prompt",
-      response: "AI 回复",
+    plans: {
+      title: "学习计划",
+      subtitle: "按阶段规划学习目标、截止时间和当前状态。",
+      titlePlaceholder: "计划名称，例如 后端 API 阶段",
+      goalPlaceholder: "阶段目标",
+      dueDatePlaceholder: "截止日期，例如 2026-07-21",
+      add: "新增计划",
+      loading: "正在加载学习计划...",
+      empty: "暂无学习计划，先创建一个阶段计划。",
+      required: "计划名称不能为空。",
+      createFailed: "新增学习计划失败。",
+      goal: "目标",
+      dueDate: "截止",
+      noGoal: "暂无目标说明",
+      noDueDate: "未设置",
+      status: {
+        planned: "计划中",
+        active: "执行中",
+        finished: "已完成",
+      },
     },
-    review: {
-      title: "项目复盘",
-      subtitle: "集中整理 AI Code Review、开发阶段和个人总结材料。",
-      codeReviewTitle: "AI Code Review",
-      codeReviewText: "已将 AI 审查建议、采纳结果和验证记录整理到 code_review.md。",
-      summaryTitle: "个人总结",
-      summaryText: "summary.md 已补充 500 字以上的实训总结，可作为最终提交材料。",
-      deploymentTitle: "部署状态",
-      deploymentText: "后端部署在 Render，前端部署在 Vercel，数据库使用 Supabase 免费 PostgreSQL。",
-      evidenceTitle: "过程留痕",
-      evidenceText: "prompt_log.md 记录了关键 Prompt、AI 回复和对应功能文件。",
+    notes: {
+      title: "学习笔记",
+      subtitle: "记录问题、解决过程、部署经验和技术总结。",
+      titlePlaceholder: "笔记标题",
+      contentPlaceholder: "笔记内容",
+      categoryPlaceholder: "分类，例如 deployment / frontend / backend",
+      add: "新增笔记",
+      loading: "正在加载学习笔记...",
+      empty: "暂无学习笔记，先记录一次问题解决过程。",
+      required: "标题和内容不能为空。",
+      createFailed: "新增学习笔记失败。",
+      category: "分类",
     },
   },
   en: {
@@ -100,37 +100,35 @@ const messages = {
     nav: {
       dashboard: "Dashboard",
       tasks: "Tasks",
-      prompts: "Prompts",
-      review: "Review",
+      plans: "Plans",
+      notes: "Notes",
     },
     language: {
-      zh: "中文",
-      en: "English",
       switchTo: "Switch language",
     },
     common: {
       apiError: "Cannot connect to the backend API. Start Flask or configure the deployed API URL.",
-      emptyFile: "No related file",
       loading: "Loading...",
     },
     dashboard: {
       title: "Dashboard",
-      subtitle: "Track study tasks, AI prompt evidence, and full-stack project progress.",
+      subtitle: "Track tasks, plans, notes, and full-stack project progress.",
       totalTasks: "Total Tasks",
       completed: "Completed",
-      promptLogs: "Prompt Logs",
+      plans: "Plans",
+      notes: "Notes",
       apiStatus: "API Status",
       offline: "Offline",
       checking: "Checking",
       online: "Online",
       recentTasks: "Recent Tasks",
-      recentPrompts: "Recent Prompts",
+      recentPlans: "Recent Plans",
       noTasks: "No task data yet.",
-      noPrompts: "No prompt data yet.",
+      noPlans: "No plan data yet.",
     },
     tasks: {
       title: "Tasks",
-      subtitle: "Manage study tasks and create visible records for the final demo.",
+      subtitle: "Manage study tasks and create visible progress records.",
       completion: "Completion",
       titlePlaceholder: "Task title",
       descriptionPlaceholder: "Task description",
@@ -152,33 +150,47 @@ const messages = {
         done: "Done",
       },
     },
-    prompts: {
-      title: "Prompts",
-      subtitle: "Record prompts, AI responses, and related files for assessment evidence.",
-      promptPlaceholder: "User prompt",
-      responsePlaceholder: "Original AI response or key output",
-      filePlaceholder: "Related feature or file, for example frontend/app/tasks/page.tsx",
-      add: "Add prompt",
-      loading: "Loading prompt logs...",
-      empty: "No prompt logs yet. Add one to document the development process.",
-      required: "Prompt and AI response are required.",
-      createFailed: "Failed to create prompt log.",
-      prompt: "Prompt",
-      response: "AI Response",
+    plans: {
+      title: "Plans",
+      subtitle: "Plan learning goals, deadlines, and status by stage.",
+      titlePlaceholder: "Plan name, for example Backend API stage",
+      goalPlaceholder: "Stage goal",
+      dueDatePlaceholder: "Due date, for example 2026-07-21",
+      add: "Add plan",
+      loading: "Loading plans...",
+      empty: "No plans yet. Create a stage plan first.",
+      required: "Plan title is required.",
+      createFailed: "Failed to create plan.",
+      goal: "Goal",
+      dueDate: "Due",
+      noGoal: "No goal description",
+      noDueDate: "Not set",
+      status: {
+        planned: "Planned",
+        active: "Active",
+        finished: "Finished",
+      },
     },
-    review: {
-      title: "Review",
-      subtitle: "Organize AI code review, development stages, and personal reflection materials.",
-      codeReviewTitle: "AI Code Review",
-      codeReviewText: "AI review suggestions, accepted changes, and validation records are in code_review.md.",
-      summaryTitle: "Final Summary",
-      summaryText: "summary.md contains a 500+ Chinese-character reflection for final submission.",
-      deploymentTitle: "Deployment",
-      deploymentText: "The backend is on Render, the frontend is on Vercel, and the database is Supabase PostgreSQL.",
-      evidenceTitle: "Evidence",
-      evidenceText: "prompt_log.md records key prompts, AI responses, and related feature files.",
+    notes: {
+      title: "Notes",
+      subtitle: "Record issues, solutions, deployment lessons, and technical summaries.",
+      titlePlaceholder: "Note title",
+      contentPlaceholder: "Note content",
+      categoryPlaceholder: "Category, for example deployment / frontend / backend",
+      add: "Add note",
+      loading: "Loading notes...",
+      empty: "No notes yet. Record one problem-solving process first.",
+      required: "Title and content are required.",
+      createFailed: "Failed to create note.",
+      category: "Category",
     },
   },
+};
+
+type LanguageContextValue = {
+  language: Language;
+  setLanguage: (language: Language) => void;
+  t: typeof messages.zh;
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -217,4 +229,3 @@ export function useLanguage() {
   }
   return value;
 }
-

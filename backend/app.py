@@ -45,6 +45,42 @@ class PromptLog(db.Model):
         }
 
 
+class Plan(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(160), nullable=False)
+    goal = db.Column(db.Text, default="")
+    status = db.Column(db.String(20), default="planned")
+    due_date = db.Column(db.String(40), default="")
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "goal": self.goal,
+            "status": self.status,
+            "due_date": self.due_date,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+        }
+
+
+class Note(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(160), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    category = db.Column(db.String(80), default="general")
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "content": self.content,
+            "category": self.category,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+        }
+
+
 def create_app(test_config=None):
     app = Flask(__name__)
     database_url = os.getenv("DATABASE_URL", "sqlite:///dev.db")
@@ -137,6 +173,50 @@ def create_app(test_config=None):
         db.session.add(prompt_log)
         db.session.commit()
         return jsonify(prompt_log.to_dict()), 201
+
+    @app.get("/api/plans")
+    def list_plans():
+        plans = Plan.query.order_by(Plan.created_at.desc()).all()
+        return jsonify([plan.to_dict() for plan in plans])
+
+    @app.post("/api/plans")
+    def create_plan():
+        data = request.get_json(silent=True) or {}
+        title = (data.get("title") or "").strip()
+        if not title:
+            return jsonify({"error": "title is required"}), 400
+
+        plan = Plan(
+            title=title,
+            goal=(data.get("goal") or "").strip(),
+            status=data.get("status") or "planned",
+            due_date=(data.get("due_date") or "").strip(),
+        )
+        db.session.add(plan)
+        db.session.commit()
+        return jsonify(plan.to_dict()), 201
+
+    @app.get("/api/notes")
+    def list_notes():
+        notes = Note.query.order_by(Note.created_at.desc()).all()
+        return jsonify([note.to_dict() for note in notes])
+
+    @app.post("/api/notes")
+    def create_note():
+        data = request.get_json(silent=True) or {}
+        title = (data.get("title") or "").strip()
+        content = (data.get("content") or "").strip()
+        if not title or not content:
+            return jsonify({"error": "title and content are required"}), 400
+
+        note = Note(
+            title=title,
+            content=content,
+            category=(data.get("category") or "general").strip(),
+        )
+        db.session.add(note)
+        db.session.commit()
+        return jsonify(note.to_dict()), 201
 
     return app
 

@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { CheckCircle2, Clock3, ListTodo, Server } from "lucide-react";
-import { getPrompts, getTasks, PromptLog, Task } from "@/lib/api";
+import { BookOpenText, CalendarDays, CheckCircle2, ListTodo, Server } from "lucide-react";
+import { getNotes, getPlans, getTasks, Note, Plan, Task } from "@/lib/api";
 import { useLanguage } from "@/lib/i18n";
 
 export default function DashboardPage() {
   const { t } = useLanguage();
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [prompts, setPrompts] = useState<PromptLog[]>([]);
+  const [plans, setPlans] = useState<Plan[]>([]);
+  const [notes, setNotes] = useState<Note[]>([]);
   const [loading, setLoading] = useState(true);
   const [apiError, setApiError] = useState("");
 
@@ -17,9 +18,10 @@ export default function DashboardPage() {
       try {
         setApiError("");
         setLoading(true);
-        const [taskData, promptData] = await Promise.all([getTasks(), getPrompts()]);
+        const [taskData, planData, noteData] = await Promise.all([getTasks(), getPlans(), getNotes()]);
         setTasks(taskData);
-        setPrompts(promptData);
+        setPlans(planData);
+        setNotes(noteData);
       } catch {
         setApiError(t.common.apiError);
       } finally {
@@ -38,7 +40,8 @@ export default function DashboardPage() {
   const cards = [
     { label: t.dashboard.totalTasks, value: tasks.length, icon: ListTodo },
     { label: t.dashboard.completed, value: doneCount, icon: CheckCircle2 },
-    { label: t.dashboard.promptLogs, value: prompts.length, icon: Clock3 },
+    { label: t.dashboard.plans, value: plans.length, icon: CalendarDays },
+    { label: t.dashboard.notes, value: notes.length, icon: BookOpenText },
     {
       label: t.dashboard.apiStatus,
       value: apiError ? t.dashboard.offline : loading ? t.dashboard.checking : t.dashboard.online,
@@ -93,15 +96,15 @@ export default function DashboardPage() {
         </article>
 
         <article className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-lg font-semibold text-slate-950">{t.dashboard.recentPrompts}</h2>
+          <h2 className="text-lg font-semibold text-slate-950">{t.dashboard.recentPlans}</h2>
           <div className="mt-4 space-y-3">
-            {prompts.slice(0, 3).map((item) => (
+            {plans.slice(0, 3).map((item) => (
               <div className="border-b border-slate-100 pb-3 last:border-0 last:pb-0" key={item.id}>
-                <div className="line-clamp-2 text-sm text-slate-700">{item.prompt}</div>
-                <div className="mt-1 text-xs text-slate-500">{item.related_file || t.common.emptyFile}</div>
+                <div className="font-medium text-slate-900">{item.title}</div>
+                <div className="mt-1 text-sm text-slate-500">{item.status}</div>
               </div>
             ))}
-            {!prompts.length ? <p className="text-sm text-slate-500">{t.dashboard.noPrompts}</p> : null}
+            {!plans.length ? <p className="text-sm text-slate-500">{t.dashboard.noPlans}</p> : null}
           </div>
         </article>
       </div>

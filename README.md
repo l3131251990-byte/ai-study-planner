@@ -1,6 +1,6 @@
 # AI Study Planner
 
-AI Study Planner 是一个面向个人自学实训的全栈项目，用于管理学习任务、AI Prompt 留痕和项目复盘记录。
+AI Study Planner 是一个面向个人自学实训的全栈项目，用于管理学习任务、学习计划和学习笔记。Prompt 日志、Code Review 和总结报告作为仓库文档保留，不作为用户页面展示。
 
 ## 技术栈
 
@@ -13,8 +13,8 @@ AI Study Planner 是一个面向个人自学实训的全栈项目，用于管理
 
 - `/`: 仪表盘，展示任务统计和最近记录
 - `/tasks`: 学习任务管理
-- `/prompts`: AI Prompt 日志
-- `/review`: Code Review 和项目复盘
+- `/plans`: 学习计划管理
+- `/notes`: 学习笔记记录
 
 ## API 文档
 
@@ -33,6 +33,10 @@ http://localhost:5000
 | DELETE | `/api/tasks/<id>` | 删除任务 |
 | GET | `/api/prompts` | 获取 Prompt 日志 |
 | POST | `/api/prompts` | 新建 Prompt 日志 |
+| GET | `/api/plans` | 获取学习计划 |
+| POST | `/api/plans` | 新建学习计划 |
+| GET | `/api/notes` | 获取学习笔记 |
+| POST | `/api/notes` | 新建学习笔记 |
 
 ## 本地运行
 

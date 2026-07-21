@@ -7,8 +7,8 @@ import { LanguageProvider, useLanguage } from "@/lib/i18n";
 const navItems = [
   { href: "/", key: "dashboard" },
   { href: "/tasks", key: "tasks" },
-  { href: "/prompts", key: "prompts" },
-  { href: "/review", key: "review" },
+  { href: "/plans", key: "plans" },
+  { href: "/notes", key: "notes" },
 ] as const;
 
 function AppFrame({ children }: { children: React.ReactNode }) {
@@ -56,4 +56,3 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     </LanguageProvider>
   );
 }
-

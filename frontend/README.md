@@ -23,3 +23,10 @@ Required environment variable:
 ```text
 NEXT_PUBLIC_API_BASE_URL=https://your-render-service.onrender.com
 ```
+
+## Routes
+
+- `/`
+- `/tasks`
+- `/plans`
+- `/notes`

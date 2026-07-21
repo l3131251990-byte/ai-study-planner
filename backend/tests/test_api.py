@@ -68,3 +68,40 @@ def test_prompt_workflow(client):
     listed = client.get("/api/prompts")
     assert listed.status_code == 200
     assert len(listed.get_json()) == 1
+
+
+def test_plan_workflow(client):
+    created = client.post(
+        "/api/plans",
+        json={
+            "title": "Frontend polish",
+            "goal": "Improve bilingual UI",
+            "status": "planned",
+            "due_date": "2026-07-21",
+        },
+    )
+
+    assert created.status_code == 201
+    assert created.get_json()["status"] == "planned"
+
+    listed = client.get("/api/plans")
+    assert listed.status_code == 200
+    assert len(listed.get_json()) == 1
+
+
+def test_note_workflow(client):
+    created = client.post(
+        "/api/notes",
+        json={
+            "title": "Render deployment issue",
+            "content": "Switched from psycopg2 to psycopg.",
+            "category": "deployment",
+        },
+    )
+
+    assert created.status_code == 201
+    assert created.get_json()["category"] == "deployment"
+
+    listed = client.get("/api/notes")
+    assert listed.status_code == 200
+    assert len(listed.get_json()) == 1

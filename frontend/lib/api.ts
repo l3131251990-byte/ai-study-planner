@@ -6,11 +6,20 @@ export type Task = {
   created_at: string;
 };
 
-export type PromptLog = {
+export type Plan = {
   id: number;
-  prompt: string;
-  response: string;
-  related_file: string;
+  title: string;
+  goal: string;
+  status: "planned" | "active" | "finished" | string;
+  due_date: string;
+  created_at: string;
+};
+
+export type Note = {
+  id: number;
+  title: string;
+  content: string;
+  category: string;
   created_at: string;
 };
 
@@ -40,8 +49,12 @@ export function getTasks() {
   return request<Task[]>("/api/tasks");
 }
 
-export function getPrompts() {
-  return request<PromptLog[]>("/api/prompts");
+export function getPlans() {
+  return request<Plan[]>("/api/plans");
+}
+
+export function getNotes() {
+  return request<Note[]>("/api/notes");
 }
 
 export function createTask(data: {
@@ -71,12 +84,24 @@ export function deleteTask(id: number) {
   });
 }
 
-export function createPrompt(data: {
-  prompt: string;
-  response: string;
-  related_file?: string;
+export function createPlan(data: {
+  title: string;
+  goal?: string;
+  status?: string;
+  due_date?: string;
 }) {
-  return request<PromptLog>("/api/prompts", {
+  return request<Plan>("/api/plans", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+}
+
+export function createNote(data: {
+  title: string;
+  content: string;
+  category?: string;
+}) {
+  return request<Note>("/api/notes", {
     method: "POST",
     body: JSON.stringify(data),
   });

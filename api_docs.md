@@ -47,6 +47,8 @@ Request:
 
 ## Prompts
 
+Prompt 接口用于保留开发过程数据和文档留痕，不作为前端主导航页面展示。
+
 ### GET `/api/prompts`
 
 获取 AI Prompt 留痕。
@@ -63,3 +65,39 @@ Request:
 }
 ```
 
+## Plans
+
+### GET `/api/plans`
+
+获取学习计划列表。
+
+### POST `/api/plans`
+
+Request:
+
+```json
+{
+  "title": "后端 API 阶段",
+  "goal": "完成 Flask API 和数据库连接",
+  "status": "active",
+  "due_date": "2026-07-21"
+}
+```
+
+## Notes
+
+### GET `/api/notes`
+
+获取学习笔记列表。
+
+### POST `/api/notes`
+
+Request:
+
+```json
+{
+  "title": "Render 部署问题记录",
+  "content": "psycopg2 在 Render Python 3.14 环境中失败，改用 psycopg v3。",
+  "category": "deployment"
+}
+```
