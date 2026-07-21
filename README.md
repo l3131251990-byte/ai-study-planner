@@ -129,10 +129,9 @@ Environment:
 - GitHub 仓库地址：[https://github.com/l3131251990-byte/ai-study-planner](https://github.com/l3131251990-byte/ai-study-planner)
 - 前端线上 URL：[https://ai-study-planner-ashy.vercel.app](https://ai-study-planner-ashy.vercel.app)
 - 后端 API URL：[https://ai-study-planner-g7al.onrender.com](https://ai-study-planner-g7al.onrender.com)
-- 数据库截图：
-- Postman 或 Apifox 接口截图：
+- 数据库截图：[数据库截图1.png](https://github.com/l3131251990-byte/ai-study-planner/blob/main/docs/screenshots/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%88%AA%E5%9B%BE1.png)
 - AI Code Review 截图或报告：`code_review.md`
-- 演示录屏：
+- 演示录屏：[项目演示.mp4](https://github.com/l3131251990-byte/ai-study-planner/blob/main/docs/screenshots/%E9%A1%B9%E7%9B%AE%E6%BC%94%E7%A4%BA.mp4)
 - 个人总结报告：`summary.md`
 
 ## 文档位置
@@ -147,9 +146,9 @@ Environment:
 
 ## 演示与截图材料
 
-- 数据库截图 1：`docs/screenshots/数据库截图1.png`
+- 数据库截图 1：[数据库截图1.png](https://github.com/l3131251990-byte/ai-study-planner/blob/main/docs/screenshots/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%88%AA%E5%9B%BE1.png)
 - 数据库截图 2：`docs/screenshots/数据库截图2.png`
-- 项目演示视频：`docs/screenshots/项目演示.mp4`
+- 项目演示视频：[项目演示.mp4](https://github.com/l3131251990-byte/ai-study-planner/blob/main/docs/screenshots/%E9%A1%B9%E7%9B%AE%E6%BC%94%E7%A4%BA.mp4)
 
 ## 当前验证记录
 
