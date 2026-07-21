@@ -145,6 +145,12 @@ Environment:
 - 提交检查清单：`submission_checklist.md`
 - 截图目录：`docs/screenshots/`
 
+## 演示与截图材料
+
+- 数据库截图 1：`docs/screenshots/数据库截图1.png`
+- 数据库截图 2：`docs/screenshots/数据库截图2.png`
+- 项目演示视频：`docs/screenshots/项目演示.mp4`
+
 ## 当前验证记录
 
 - 后端自动测试：`pytest`，5 passed
