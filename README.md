@@ -21,7 +21,7 @@ AI Study Planner 是一个面向个人自学实训的全栈项目，用于管理
 后端基础地址：
 
 ```text
-http://localhost:5000
+https://ai-study-planner-g7al.onrender.com
 ```
 
 | Method | Path | Description |
@@ -78,14 +78,20 @@ npm run dev
 
 ## 线上地址
 
-提交前补充：
+- GitHub Repository: [https://github.com/l3131251990-byte/ai-study-planner](https://github.com/l3131251990-byte/ai-study-planner)
+- Vercel Frontend: [https://ai-study-planner-ashy.vercel.app](https://ai-study-planner-ashy.vercel.app)
+- Render Backend: [https://ai-study-planner-g7al.onrender.com](https://ai-study-planner-g7al.onrender.com)
+- Backend Health Check: [https://ai-study-planner-g7al.onrender.com/api/health](https://ai-study-planner-g7al.onrender.com/api/health)
+- Tasks API: [https://ai-study-planner-g7al.onrender.com/api/tasks](https://ai-study-planner-g7al.onrender.com/api/tasks)
+- Plans API: [https://ai-study-planner-g7al.onrender.com/api/plans](https://ai-study-planner-g7al.onrender.com/api/plans)
+- Notes API: [https://ai-study-planner-g7al.onrender.com/api/notes](https://ai-study-planner-g7al.onrender.com/api/notes)
 
-```text
-GitHub Repository:
-Vercel Frontend:
-Render Backend:
-Backend Health Check:
-```
+## 前端页面
+
+- 仪表盘: [https://ai-study-planner-ashy.vercel.app](https://ai-study-planner-ashy.vercel.app)
+- 学习任务: [https://ai-study-planner-ashy.vercel.app/tasks](https://ai-study-planner-ashy.vercel.app/tasks)
+- 学习计划: [https://ai-study-planner-ashy.vercel.app/plans](https://ai-study-planner-ashy.vercel.app/plans)
+- 学习笔记: [https://ai-study-planner-ashy.vercel.app/notes](https://ai-study-planner-ashy.vercel.app/notes)
 
 ## Render 配置
 
@@ -119,14 +125,14 @@ Environment:
 
 ## 提交物清单
 
-- GitHub 仓库地址：
-- 前端线上 URL：
-- 后端 API URL：
+- GitHub 仓库地址：[https://github.com/l3131251990-byte/ai-study-planner](https://github.com/l3131251990-byte/ai-study-planner)
+- 前端线上 URL：[https://ai-study-planner-ashy.vercel.app](https://ai-study-planner-ashy.vercel.app)
+- 后端 API URL：[https://ai-study-planner-g7al.onrender.com](https://ai-study-planner-g7al.onrender.com)
 - 数据库截图：
 - Postman 或 Apifox 接口截图：
-- AI Code Review 截图或报告：
+- AI Code Review 截图或报告：`code_review.md`
 - 演示录屏：
-- 个人总结报告：
+- 个人总结报告：`summary.md`
 
 ## 文档位置
 
@@ -140,6 +146,7 @@ Environment:
 
 ## 当前验证记录
 
-- 后端自动测试：`pytest`，3 passed
+- 后端自动测试：`pytest`，5 passed
 - 前端静态检查：`tsc --noEmit`，passed
-- 本机限制：当前 Windows/Codex 环境中 Next SWC 原生包加载失败，最终以前端部署平台 Vercel 的构建结果为准
+- Render 后端健康检查：`/api/health` 返回 `{"service":"ai-study-planner-api","status":"ok"}`
+- Vercel 前端构建：云端构建通过
